@@ -1,4 +1,4 @@
-# Introducton into Cyber Security Centria fall 2024
+# Cybersecurity and data privacy, Centria fall 2024
 
 ## Log
 
