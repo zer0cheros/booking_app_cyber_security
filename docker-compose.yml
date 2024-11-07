@@ -1,10 +1,39 @@
 version: '3'
 services:
-  "database":
-    image: "postgres:latest"
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: chris
+      POSTGRES_PASSWORD: h4ck3rs_4_l1f3
+      POSTGRES_DB: bookingdb
     ports:
       - "5432:5432"
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB: "booking"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    image: denoland/deno:latest
+    container_name: deno_backend
+    command: ["/bin/sh", "-c", "deno install && deno task dev:api"]
+    ports:
+      - "5000:5000" 
+    volumes:
+      - ./:/app
+    working_dir: /app
+    depends_on:
+      - db
+
+  frontend:
+    image: node:18
+    container_name: vite_frontend
+    command: ["/bin/sh", "-c", "npm run dev"]
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./:/app
+    working_dir: 
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

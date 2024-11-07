@@ -6,7 +6,7 @@ router. get("/", ({request, response}) => {
 })
 
 
-router.post("/register", async ({request, response}) => {
+router.post("/api/register", async ({request, response}) => {
   const { username, email, password } = await request.body.json()
   response.body = { message: username + " " + email + " " + password } ;
 });

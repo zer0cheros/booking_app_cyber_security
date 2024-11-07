@@ -6,4 +6,3 @@ content-type: application/json
     "email" : "chris@gmail.com",
     "password": "test"
 }
-
