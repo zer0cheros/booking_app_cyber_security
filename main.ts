@@ -1,4 +1,4 @@
-import { Application } from "https://deno.land/x/oak/mod.ts";
+import { Application } from "https://deno.land/x/oak@v17.1.2/application.ts";
 import router from './api/controller.ts';
 const server = new Application();
 
@@ -9,4 +9,4 @@ server.use(router.allowedMethods());
 const PORT = 5000;
 
 
-await server.listen({ port: PORT });
+await server.listen({ port: PORT }); 
