@@ -10,7 +10,19 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+  initdb:
+    image: postgres:latest
+    depends_on:
+      - db
+    volumes:
       - ./booking_system_structure.sql:/docker-entrypoint-initdb.d/booking_system_structure.sql
+    environment:
+      POSTGRES_USER: chris
+      POSTGRES_PASSWORD: h4ck3rs_4_l1f3
+      POSTGRES_DB: bookingdb
+      PGPASSWORD: h4ck3rs_4_l1f3
+    entrypoint: ["sh", "-c", "until pg_isready -h db -U chris; do sleep 1; done; psql -h db -U chris -d bookingdb -f /docker-entrypoint-initdb.d/booking_system_structure.sql"]
+
 
 volumes:
   db_data:

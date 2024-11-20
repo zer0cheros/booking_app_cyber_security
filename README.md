@@ -12,8 +12,12 @@
 | 2024-11-11 | Completed 4 moduels on Cisco       | 16.00      | 20.00    | 4.0         |
 | 2024-11-12 | Runnning some test with Zap        | 18.00      | 20.00    | 2.0         |
 | 2024-11-13 | Fixed Database and router          | 17.00      | 20.00    | 3.0         |
+| 2024-11-14 | Wached som recordings              | 18.00      | 20.00    | 2.0         |
+| 2024-11-17 | Completed 2 moduels on Cisco       | 18.00      | 20.00    | 2.0         |
+| 2024-11-18 | Code, Code, Code                   | 18.00      | 20.00    | 2.0         |
+| 2024-11-20 | Final test with Zap                | 18.00      | 21.00    | 3.0         |
 __________________________________________________________________________________________
-|Total hours: 17.0|
+|Total hours: 22.0|
 
 ## Booking App
 

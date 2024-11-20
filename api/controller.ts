@@ -1,5 +1,5 @@
 import { Router } from "https://deno.land/x/oak@v17.1.2/mod.ts";
-import { conn, registerUser } from "../core/db/db.ts";
+import { registerUser } from "../core/db/config.ts";
 const router = new Router();
 
 router. get("/", ({request, response}) => {
@@ -7,11 +7,11 @@ router. get("/", ({request, response}) => {
 })
 
 
-router.post("/register", async ({request, response}) => {
+router.post("/api/register", async ({request, response}) => {
   const { username, email, password } = await request.body.json()
-  await conn();
-  const res = await registerUser({username, email, password});
-  response.body = { message: res} ;
+  console.log(username)
+  const res = await registerUser({ username, email, password });
+  response.body = { message: res } ;
 });
 
 export default router;
