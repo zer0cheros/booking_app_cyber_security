@@ -1,6 +1,6 @@
-# Creating a .MD file with the provided Markdown content
+# Zap Test 1
 
-content = """
+
 ### X-Content-Type-Options Header Missing
 
 - **URL**: `http://192.168.2.122:5000`
@@ -42,6 +42,6 @@ Ensure that the application/web server sets the Content-Type header appropriatel
 | OWASP_2017_A06      | [https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html](https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html) |
 
 ---
-"""
+
 
 

@@ -2,11 +2,18 @@ import { Application } from "https://deno.land/x/oak@v17.1.2/mod.ts";
 import router from './api/controller.ts';
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import { header } from "./api/middleware.ts";
+//import { Session, PostgresStore } from "https://deno.land/x/oak_sessions/mod.ts"
 
 
 const server = new Application();
 
+// const store = new PostgresStore(pool, 'sessions');
 
+// // Initialize sessions table
+// await store.initSessionsTable();
+
+
+// server.use(Session.initMiddleware(store));
 server.use(header);
 server.use(
   oakCors({

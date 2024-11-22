@@ -9,3 +9,12 @@ content-type: application/json
 
 ###
 GEt http://localhost:5000/ HTTP/1.1
+
+###
+POST http://localhost:5000/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "email" : "chris5@gmail.com",
+    "password": "test1234"
+}
