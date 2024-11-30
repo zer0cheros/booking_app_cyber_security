@@ -17,13 +17,15 @@ const server = new Application();
 server.use(header);
 server.use(
   oakCors({
-    origin: "http://localhost:5173",
+    origin: "http://192.168.2.122:5173",
     optionsSuccessStatus: 200,
     methods: "POST, GET, OPTIONS",
   }),
 );
 server.use(router.routes());
 server.use(router.allowedMethods()); 
+
+
 
 // Start the server
 const PORT = Deno.env.get('PORT') ? Number(Deno.env.get('PORT')) : 5000;

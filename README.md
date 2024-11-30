@@ -9,6 +9,7 @@
 | 2024-10-30 | Writing README.md                  | 19.00      | 20.00    | 1.0         |
 | 2024-11-4  | Completed 2 moduels on Cisco       | 18.00      | 20.00    | 2.0         |
 | 2024-11-5  | Wached recoreded lecture           | 17.00      | 19.00    | 2.0         |
+| 2024-11-9  | Coded and tested my app            | 17.00      | 20.00    | 3.0         |
 | 2024-11-11 | Completed 4 moduels on Cisco       | 16.00      | 20.00    | 4.0         |
 | 2024-11-12 | Runnning some test with Zap        | 18.00      | 20.00    | 2.0         |
 | 2024-11-13 | Fixed Database and router          | 17.00      | 20.00    | 3.0         |
@@ -16,8 +17,9 @@
 | 2024-11-17 | Completed 2 moduels on Cisco       | 18.00      | 20.00    | 2.0         |
 | 2024-11-18 | Code, Code, Code                   | 18.00      | 20.00    | 2.0         |
 | 2024-11-20 | Final test with Zap                | 18.00      | 21.00    | 3.0         |
+| 2024-11-21 | Coded and tested my app            | 12.00      | 16.00    | 4.0         |
 __________________________________________________________________________________________
-|Total hours: 22.0|
+|Total hours: 33.0|
 
 ## Booking App
 

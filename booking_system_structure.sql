@@ -28,3 +28,14 @@ CREATE TABLE IF NOT EXISTS leet_accounts (
     expires_at TIMESTAMP,
     linked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+CREATE TABLE IF NOT EXISTS login_logs (
+    id SERIAL PRIMARY KEY,
+    pseudonymized_username VARCHAR(255) NOT NULL,
+    ip_address VARCHAR(45),
+    login_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE INDEX IF NOT EXISTS idx_login_logs_pseudonym ON login_logs (pseudonymized_username);

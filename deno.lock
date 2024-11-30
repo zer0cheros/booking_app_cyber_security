@@ -30,7 +30,8 @@
     "npm:tailwindcss@^3.4.14": "3.4.14_postcss@8.4.47",
     "npm:typescript-eslint@^8.11.0": "8.13.0_@typescript-eslint+parser@8.13.0__eslint@9.14.0__typescript@5.6.3_eslint@9.14.0_typescript@5.6.3",
     "npm:typescript@~5.6.2": "5.6.3",
-    "npm:vite@^5.4.10": "5.4.10"
+    "npm:vite@*": "5.4.10_@types+node@22.5.4",
+    "npm:vite@^5.4.10": "5.4.10_@types+node@22.5.4"
   },
   "jsr": {
     "@oak/commons@1.0.0": {
@@ -617,7 +618,7 @@
         "@babel/plugin-transform-react-jsx-source",
         "@types/babel__core",
         "react-refresh",
-        "vite"
+        "vite@5.4.10"
       ]
     },
     "acorn-jsx@5.3.2_acorn@8.14.0": {
@@ -1602,6 +1603,16 @@
         "rollup"
       ]
     },
+    "vite@5.4.10_@types+node@22.5.4": {
+      "integrity": "sha512-1hvaPshuPUtxeQ0hsVH3Mud0ZanOLwVTneA1EgbAM5LhaZEqyPWGRQ7BtaMvUrTDeEaC8pxtj6a6jku3x4z6SQ==",
+      "dependencies": [
+        "@types/node",
+        "esbuild",
+        "fsevents",
+        "postcss",
+        "rollup"
+      ]
+    },
     "which@2.0.2": {
       "integrity": "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==",
       "dependencies": [
@@ -1647,6 +1658,12 @@
     "https://deno.land/x/postgres/mod.ts": "https://deno.land/x/postgres@v0.19.3/mod.ts"
   },
   "remote": {
+    "https://deno.land/std@0.106.0/encoding/base64.ts": "eecae390f1f1d1cae6f6c6d732ede5276bf4b9cd29b1d281678c054dc5cc009e",
+    "https://deno.land/std@0.106.0/encoding/hex.ts": "5bc7df19af498c315cdaba69e2fce1b2aef5fc57344e8c21c08991aa8505a260",
+    "https://deno.land/std@0.106.0/hash/_wasm/hash.ts": "313a4820227f1c45fa7204d9c28731b4f8ce97cdcc5f1e7e4efcdf2d70540d32",
+    "https://deno.land/std@0.106.0/hash/_wasm/wasm.js": "792f612fbb9998e267f9ae3f82ed72444305cb9c77b5bbf7ff6517fd3b606ed1",
+    "https://deno.land/std@0.106.0/hash/hasher.ts": "57a9ec05dd48a9eceed319ac53463d9873490feea3832d58679df6eec51c176b",
+    "https://deno.land/std@0.106.0/hash/mod.ts": "dd339a26b094032f38d71311b85745e8d19f2085364794c1877057e057902dd9",
     "https://deno.land/std@0.119.0/async/deadline.ts": "1d6ac7aeaee22f75eb86e4e105d6161118aad7b41ae2dd14f4cfd3bf97472b93",
     "https://deno.land/std@0.119.0/async/debounce.ts": "b2f693e4baa16b62793fd618de6c003b63228db50ecfe3bd51fc5f6dc0bc264b",
     "https://deno.land/std@0.119.0/async/deferred.ts": "ab60d46ba561abb3b13c0c8085d05797a384b9f182935f051dc67136817acdee",
@@ -2654,6 +2671,16 @@
     "https://deno.land/x/superoak@4.8.1/src/superoak.ts": "9c08a3211c4d1f7bb89e88fc3f242536fce654c157aa6db52d3c24f033bb3d28",
     "https://deno.land/x/superoak@4.8.1/version.ts": "b9b71ac3596ff0a6aaad2bf9df8a54fb2925abd526800879e261de9c693812bc",
     "https://deno.land/x/web_bson@v0.3.0/mod.js": "8e14aecd31ee63abd30e2dbaa284b4b67abb7ba51fcef5b96af74727cb7c7940",
+    "https://deno.land/x/zod@v3.16.1/ZodError.ts": "6e56e6416bbbad3539b577b7636dc198e5d87cf59f1ceb4e7b58d1d38190c2f7",
+    "https://deno.land/x/zod@v3.16.1/external.ts": "433e13ff774fef22d416027308db33cacb719774898372ec5faa32bb572f11dc",
+    "https://deno.land/x/zod@v3.16.1/helpers/errorUtil.ts": "7a77328240be7b847af6de9189963bd9f79cab32bbc61502a9db4fe6683e2ea7",
+    "https://deno.land/x/zod@v3.16.1/helpers/parseUtil.ts": "2611b41b579f551fcf0799415f9793709637bc7c7778bf53aab73cea92e859db",
+    "https://deno.land/x/zod@v3.16.1/helpers/partialUtil.ts": "8dc921a02b47384cf52217c7e539268daf619f89319b75bdf13ea178815725df",
+    "https://deno.land/x/zod@v3.16.1/helpers/typeAliases.ts": "a1a8d039eb98925f242f5ea1e21e6d3cabd7f05e9747680165c914695c979b4f",
+    "https://deno.land/x/zod@v3.16.1/helpers/util.ts": "1d28cc4dfde641f20d8544a1a747cf745d5eda0c5cdeaca8a29837991254a67d",
+    "https://deno.land/x/zod@v3.16.1/index.ts": "035a7422d9f2be54daa0fe464254b69225b443000673e4794095d672471e8792",
+    "https://deno.land/x/zod@v3.16.1/mod.ts": "64e55237cb4410e17d968cd08975566059f27638ebb0b86048031b987ba251c4",
+    "https://deno.land/x/zod@v3.16.1/types.ts": "fff4c7909b1919989c4cc1abe6218dfbdb53e197cacb2dfad2831dbd71dc56d2",
     "https://jspm.dev/npm:call-bind@1.0.5!cjs": "09f8399c727fc1e9d58fdafc0a729b45bf37b7ee0c11d9d0b39abe37ac42ccf5",
     "https://jspm.dev/npm:call-bind@1.0.5/callBound!cjs": "55fa05e2b115eeaef9ff684e3df12de253e6644a40ad09b5722f3a9a8df8f645",
     "https://jspm.dev/npm:call-bind@1/callBound!cjs": "9cf2ef160025d392767618c2f0cb72d32cf14caa3fbeb493c6df9bde9d7fca8d",

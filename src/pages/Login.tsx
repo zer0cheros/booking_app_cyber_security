@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react'
 
-export default function Register() {
-  // State to hold form inputs
-  const [formData, setFormData] = useState({
-    username: '',
+export default function Login() {
+   // State to hold form inputs
+   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
@@ -19,19 +18,18 @@ export default function Register() {
 
   const _handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const { username, email, password } = formData;
-    if (!username || !email || !password) {
+    const { email, password } = formData;
+    if ( !email || !password) {
       alert('Please fill out all fields.');
       return;
     }
 
-    fetch('http://192.168.2.122:5000/api/register', {
+    fetch('http://192.168.2.122:5000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({  email, password }),
     })
       .then(response => response.json())
       .then(data => {
@@ -41,18 +39,10 @@ export default function Register() {
         console.error('Error:', error);
       });
   };
-
-  return (
+    return (
     <div>
-      <h1>Register</h1>
+      <h1>Login</h1>
       <form onSubmit={_handleSubmit} className="flex flex-col p-5 max-w-[500px] text-slate-900">
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={_handleChange}
-        />
         <input
           type="email"
           name="email"
@@ -68,9 +58,9 @@ export default function Register() {
           onChange={_handleChange}
         />
         <button className="button rounded-sm bg-slate-50 text-slate-900" type="submit">
-          Register
+         Login
         </button>
       </form>
     </div>
-  );
+  )
 }
