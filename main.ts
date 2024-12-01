@@ -1,20 +1,23 @@
 import { Application } from "https://deno.land/x/oak@v17.1.2/mod.ts";
 import router from './api/controller.ts';
-import { oakCors } from "https://deno.land/x/cors/mod.ts";
+import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 import { header } from "./api/middleware.ts";
-//import { Session, PostgresStore } from "https://deno.land/x/oak_sessions/mod.ts"
+import { Session, PostgresStore } from "https://deno.land/x/oak_sessions@v9.0.0/mod.ts";
+import { sql } from "./core/db/config.ts";
+
+export type AppState = {
+  session: Session
+}
 
 
-const server = new Application();
+const server = new Application<AppState>();
 
-// const store = new PostgresStore(pool, 'sessions');
+const store = new PostgresStore(sql, 'sessions')
 
-// // Initialize sessions table
-// await store.initSessionsTable();
+await store.initSessionsTable()
 
+server.use(Session.initMiddleware(store));
 
-// server.use(Session.initMiddleware(store));
-server.use(header);
 server.use(
   oakCors({
     origin: "http://192.168.2.122:5173",
@@ -22,6 +25,8 @@ server.use(
     methods: "POST, GET, OPTIONS",
   }),
 );
+
+server.use(header);
 server.use(router.routes());
 server.use(router.allowedMethods()); 
 

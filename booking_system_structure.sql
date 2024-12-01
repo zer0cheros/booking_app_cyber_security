@@ -9,14 +9,14 @@ CREATE TABLE IF NOT EXISTS acce_users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS L00t3d_sessions (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES acce_users(id),
-    session_token VARCHAR(255) NOT NULL UNIQUE,
-    ip_address VARCHAR(45), 
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    expires_at TIMESTAMP NOT NULL
-);
+-- CREATE TABLE IF NOT EXISTS L00t3d_sessions (
+--     id SERIAL PRIMARY KEY,
+--     user_id INT NOT NULL REFERENCES acce_users(id),
+--     session_token VARCHAR(255) NOT NULL UNIQUE,
+--     ip_address VARCHAR(45), 
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     expires_at TIMESTAMP NOT NULL
+-- );
 
 CREATE TABLE IF NOT EXISTS leet_accounts (
     id SERIAL PRIMARY KEY,

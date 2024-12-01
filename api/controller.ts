@@ -2,7 +2,7 @@ import { Router } from "https://deno.land/x/oak@v17.1.2/mod.ts";
 import { login, registerUser } from "../core/auth/config.ts";
 import { z } from "https://deno.land/x/zod@v3.16.1/mod.ts";
 import index from "../index.json" with { type: "json" };
-
+import { AppState } from "../main.ts";
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
 });
@@ -17,10 +17,10 @@ const registerSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
 });
 
-const router = new Router();
+const router = new Router<AppState>();
 
-router. get("/", ({request, response}) => {
-  response.body = index
+router. get("/", (ctx) => {
+  ctx.response.body = index
 })
 
 router.get("/api/login", ({response}) => {
@@ -29,7 +29,9 @@ router.get("/api/login", ({response}) => {
 
 
 
-router.get("/api/register", ({response}) => {
+router.get("/api/register", ({response, state}) => {
+  state.session.set('user', 'test')
+  console.log(state.session.get('user'))
   response.body = { message: "Welcome to the API" };
 });
 

@@ -1,5 +1,4 @@
 import { Context, Middleware } from "https://deno.land/x/oak@v17.1.2/mod.ts";
-;
 
 
 /**
@@ -14,6 +13,5 @@ export const header: Middleware = async (ctx: Context, next) => {
     ctx.response.headers.set("X-XSS-Protection", "1; mode=block"); 
     ctx.response.headers.set("X-Content-Type-Options", "nosniff");
     ctx.response.headers.set("Strict-Transport-Security", "max-age=86400; includeSubDomains");
-    
     await next(); 
   }
