@@ -3,6 +3,8 @@ import pool from "../db/config.ts";
 import { Users } from "../types.ts";
 import { hash, genSalt, compare } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { createHash } from "https://deno.land/std@0.106.0/hash/mod.ts";
+import { createSession } from "./sessionHandler.ts";
+import { Context } from "https://deno.land/x/oak@v17.1.2/mod.ts";
 
 
 
@@ -27,7 +29,8 @@ export async function registerUser({username, email, password}:Users): Promise<s
   }
 }
 
-export async function login({email, password}:Users): Promise<string | {msg: string, credentials: string}> {
+
+export async function login({email, password}:Users, ctx:Context): Promise<string | {msg: string, credentials: string}> {
   let db;
   try {
       db = await pool.connect();
@@ -42,7 +45,11 @@ export async function login({email, password}:Users): Promise<string | {msg: str
 
       const passwordMatch = await compare(password, user.password);
       if (passwordMatch) {
-          const token = await createToken({ email:email, id:user.id });
+          if (!user.username) {
+              throw new Error("Username is undefined");
+          }
+          const sessionData = createSession({ username: user.username, role: user.role, age: user.age }, ctx);
+          const token = await createToken({ id:sessionData.sessionId  });
           const ipAddress = await getPublicIp();
           await logSuccessfulLogin(user.username as string, ipAddress);
           return {msg: "Login successful", credentials: token};
@@ -58,6 +65,29 @@ export async function login({email, password}:Users): Promise<string | {msg: str
       }
   }
 }
+export async function checkIFUserIsOver15(username:string): Promise<boolean> {
+  const db = await pool.connect();
+  try {
+      const result = await db.queryObject({
+          text: `SELECT * FROM acce_users WHERE username = $1`,
+          args: [username],
+      });
+      console.log(result.rows)
+      if (result.rows.length === 0) {
+          return false;
+      }
+      const user: Users = result.rows[0] as Users;
+      if (user.age == undefined || user.age < 15) {
+          return false;
+      }
+      return true;
+  } catch (error) {
+      console.error("Error getting user:", error);
+      return false;
+  } finally {
+      db.release();
+  }
+}
 
 const key = await crypto.subtle.generateKey(
   { name: "HMAC", hash: "SHA-512" },
@@ -66,17 +96,12 @@ const key = await crypto.subtle.generateKey(
 );
 
 
-async function createToken(payload: Record<string, unknown>) {
-  return await create({ alg: "HS512", typ: "JWT" }, payload, key);;
+function createToken(payload: Record<string, unknown>) {
+  return create({ alg: "HS512", typ: "JWT" }, payload, key);
 }
 
-async function verifyToken(token: string) {
-const key = await crypto.subtle.generateKey(
-{ name: "HMAC", hash: "SHA-512" },
-true,
-["sign", "verify"],
-);
-return await verify(token, key);
+export  function verifyToken(token: string) {
+  return verify(token, key);
 }
 
 async function logSuccessfulLogin(username: string, ipAddress: string | null) {
@@ -103,8 +128,29 @@ function pseudonymizeUsername(username: string): string {
   hash.update(username);
   return hash.toString();
 }
+
 async function getPublicIp() {
   const response = await fetch("https://api64.ipify.org?format=json");
   const data = await response.json();
   return data.ip;
+}
+
+export async function getUserId(_username?: string, _email?: string): Promise<number | null> {
+  const db = await pool.connect();
+  try {
+    const result = await db.queryObject({
+      text: `SELECT * FROM acce_users WHERE username = $1`,
+      args: [_username],
+    });
+    if (result.rows.length === 0) {
+      return null;
+    }
+    const user = result.rows[0] as { id: number };
+    return user.id;
+  } catch (error) {
+    console.error("Error getting user:", error);
+    return null;
+  } finally {
+    db.release();
+  }
 }

@@ -2,9 +2,11 @@ POST http://localhost:5000/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "username": "ch",
-    "email" : "chris5@gmail.com",
-    "password": "test1234"
+    "username": "chris2",
+    "email" : "chris2@mail.com",
+    "password": "test1234",
+    "role": "admin",
+    "age": "6.10.1990"
 }
 
 ###
@@ -15,15 +17,26 @@ POST http://localhost:5000/api/login HTTP/1.1
 content-type: application/json
 
 {
-    "email" : "chrimail.com",
+    "email" : "chris2@mail.com",
     "password": "test1234"
 }
 
 ###
-GET http://192.168.2.122:5173/login HTTP/1.1
+GET http://localhost:5000/api/reservation HTTP/1.1
+
+###
+GET  http://localhost:5000/api/logout HTTP/1.1
+
+###
+POST http://localhost:5000/api/reservation HTTP/1.1
 content-type: application/json
 
 {
-    "email" : "chrimail.com",
-    "password": "test1234"
+    "resource_id" : 3,
+    "start_date": "2022-10-10",
+    "end_date": "2022-10-12"
 }
+
+###
+
+GET http://localhost:5000/api/reservation HTTP/1.1

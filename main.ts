@@ -1,9 +1,11 @@
 import { Application } from "https://deno.land/x/oak@v17.1.2/mod.ts";
-import router from './api/controller.ts';
+import indexRouter from './api/controller/indexController.ts';
+import authRouter from "./api/controller/authController.ts";
+import bookingRouter from "./api/controller/bookingController.ts";
 import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 import { header } from "./api/middleware.ts";
-import { Session, PostgresStore } from "https://deno.land/x/oak_sessions@v9.0.0/mod.ts";
-import { sql } from "./core/db/config.ts";
+import { Session } from "https://deno.land/x/oak_sessions@v9.0.0/mod.ts";
+import { session } from "./core/auth/sessionHandler.ts";
 
 export type AppState = {
   session: Session
@@ -12,23 +14,24 @@ export type AppState = {
 
 const server = new Application<AppState>();
 
-const store = new PostgresStore(sql, 'sessions')
-
-await store.initSessionsTable()
-
-server.use(Session.initMiddleware(store));
-
+server.use(session);
 server.use(
   oakCors({
-    origin: "http://192.168.2.122:5173",
+    origin: `http://localhost:5173`,
     optionsSuccessStatus: 200,
+    credentials: true,
     methods: "POST, GET, OPTIONS",
   }),
 );
 
 server.use(header);
-server.use(router.routes());
-server.use(router.allowedMethods()); 
+// Routes
+server.use(authRouter.routes());
+server.use(authRouter.allowedMethods());
+server.use(indexRouter.routes());
+server.use(indexRouter.allowedMethods()); 
+server.use(bookingRouter.routes());
+server.use(bookingRouter.allowedMethods());
 
 
 

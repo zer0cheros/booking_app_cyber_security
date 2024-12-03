@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { fetcher } from "../hooks/fetcher.ts";
+import { tokenAtom } from "../hooks/atoms.ts";
+import { useAtom } from "jotai";
 
 export default function Login() {
-   // State to hold form inputs
+  const [token, setToken] = useAtom(tokenAtom);
    const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
-  // Handle input change
-  const _handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const _handleChange = (e: React.ChangeEvent) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -24,16 +26,19 @@ export default function Login() {
       return;
     }
 
-    fetch('http://192.168.2.122:5000/api/login', {
+    fetch('http://localhost:5000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({  email, password }),
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log("Server Response:", data);
+        fetcher.defaults.headers["Authorization"] = `Bearer ${data.cookie}`
+        setToken(data.cookie)
       })
       .catch(error => {
         console.error('Error:', error);

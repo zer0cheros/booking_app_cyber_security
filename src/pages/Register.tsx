@@ -9,7 +9,7 @@ export default function Register() {
   });
 
   // Handle input change
-  const _handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const _handleChange = (e: React.ChangeEvent) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -26,7 +26,7 @@ export default function Register() {
       return;
     }
 
-    fetch('http://192.168.2.122:5000/api/register', {
+    fetch('http://localhost:5000/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

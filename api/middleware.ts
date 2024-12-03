@@ -15,3 +15,12 @@ export const header: Middleware = async (ctx: Context, next) => {
     ctx.response.headers.set("Strict-Transport-Security", "max-age=86400; includeSubDomains");
     await next(); 
   }
+
+export const isLoggedIn:Middleware = async(ctx:Context, next)=> {
+    if(ctx.state.session.get('sessionId')) {
+        await next()
+    } else {
+        ctx.response.status = 401;
+        ctx.response.body = {message: 'Unauthorized'}
+    }
+}

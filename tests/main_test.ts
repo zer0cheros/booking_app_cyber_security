@@ -1,5 +1,5 @@
 import { Application } from "https://deno.land/x/oak@v17.1.2/mod.ts";
-import router from "./api/controller.ts";
+import router from "../api/controller/indexController.ts";
 import { assertEquals } from "https://deno.land/std@0.160.0/testing/asserts.ts";
   const app = new Application();
     app.use(router.routes());

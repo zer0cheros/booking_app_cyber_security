@@ -4,7 +4,7 @@ const IndexPage = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://192.168.2.122:5000/") // Replace with your backend URL
+    fetch("http://localhost:5000/") 
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -25,7 +25,7 @@ const IndexPage = () => {
         <p>{data.hero.text}</p>
       </section>
       <main>
-        {data.contents.map((content) => (
+        {data.contents.map((content:{id:number, title:string, image: string, description:string}) => (
           <div key={content.id}>
             <h2>{content.title}</h2>
             <img src={content.image} alt={content.title} />
