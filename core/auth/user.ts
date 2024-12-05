@@ -1,6 +1,6 @@
 import { create, verify } from "https://deno.land/x/djwt@v3.0.2/mod.ts";
 import pool from "../db/config.ts";
-import { Users } from "../types.ts";
+import { Users, SessionType} from "../types.ts";
 import { hash, genSalt, compare } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { createHash } from "https://deno.land/std@0.106.0/hash/mod.ts";
 import { createSession } from "./sessionHandler.ts";
@@ -48,8 +48,8 @@ export async function login({email, password}:Users, ctx:Context): Promise<strin
           if (!user.username) {
               throw new Error("Username is undefined");
           }
-          const sessionData = createSession({ username: user.username, role: user.role, age: user.age }, ctx);
-          const token = await createToken({ id:sessionData.sessionId  });
+          const session:SessionType = createSession({ username: user.username, role: user.role, age: user.age } as Users, ctx);
+          const token = await createToken({ id:session.sessionId  });
           const ipAddress = await getPublicIp();
           await logSuccessfulLogin(user.username as string, ipAddress);
           return {msg: "Login successful", credentials: token};
@@ -88,6 +88,10 @@ export async function checkIFUserIsOver15(username:string): Promise<boolean> {
       db.release();
   }
 }
+
+
+
+
 
 const key = await crypto.subtle.generateKey(
   { name: "HMAC", hash: "SHA-512" },

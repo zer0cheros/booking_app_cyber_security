@@ -19,6 +19,10 @@
 | 2024-11-20 | Final test with Zap                | 18.00      | 21.00    | 3.0         |
 | 2024-11-21 | Coded and tested my app            | 12.00      | 16.00    | 4.0         |
 | 2024-11-22 | Trying to solve session-problem    | 20.00      | 21.30    | 1.5         |
+| 2024-11-23 | Wached som recordings              | 20.00      | 21.30    | 1.5         |
+| 2024-12-2  | Started to work on Phase 3         | 14.00      | 19.00    | 5.0         |
+| 2024-12-3  | Did some testing on App            | 14.00      | 16.30    | 2.5         |
+| 2024-12-4  | Fixed a big bug!!                  | 18.00      | 20.00    | 2.0         |
 __________________________________________________________________________________________
 |Total hours: 33.0|
 

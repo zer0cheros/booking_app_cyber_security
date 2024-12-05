@@ -24,3 +24,12 @@ export const isLoggedIn:Middleware = async(ctx:Context, next)=> {
         ctx.response.body = {message: 'Unauthorized'}
     }
 }
+
+export const AdminMiddleware:Middleware = async(ctx:Context, next)=> {
+    if(ctx.state.session.get('sessionData').role === 'administrator') {
+        await next()
+    } else {
+        ctx.response.status = 401;
+        ctx.response.body = {message: 'Unauthorized'}       
+    }
+}

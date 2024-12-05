@@ -3,6 +3,7 @@ import { login, registerUser } from '../../core/auth/user.ts'
 import { AppState } from "../../main.ts";
 import { registerSchema, loginSchema } from "../../core/helper.ts";
 import { z } from "https://deno.land/x/zod@v3.16.1/mod.ts";
+import { AdminMiddleware, isLoggedIn } from "../middleware.ts";
 
 
 const router = new Router<AppState>();
@@ -44,7 +45,6 @@ router.post("/api/login", async (ctx) => {
     }  
 })
 
-
 //logout a user
 router.get("/api/logout", async ({ response, state, cookies }) => {
     try {
@@ -64,5 +64,11 @@ router.get("/api/logout", async ({ response, state, cookies }) => {
         console.error("Logout error:", error);
     }
 });
+
+
+router.get("/api/profile", isLoggedIn, async ({ response, state }) => {
+    response.body = { message: `Hello ${state.session.get('sessionData').username}` }
+})
+
 
 export default router

@@ -1,7 +1,8 @@
 import { Application } from "https://deno.land/x/oak@v17.1.2/mod.ts";
 import indexRouter from './api/controller/indexController.ts';
-import authRouter from "./api/controller/authController.ts";
+import userRouter from "./api/controller/userController.ts";
 import bookingRouter from "./api/controller/bookingController.ts";
+import adminRouter from "./api/controller/adminController.ts";
 import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 import { header } from "./api/middleware.ts";
 import { Session } from "https://deno.land/x/oak_sessions@v9.0.0/mod.ts";
@@ -26,12 +27,14 @@ server.use(
 
 server.use(header);
 // Routes
-server.use(authRouter.routes());
-server.use(authRouter.allowedMethods());
+server.use(userRouter.routes());
+server.use(userRouter.allowedMethods());
 server.use(indexRouter.routes());
 server.use(indexRouter.allowedMethods()); 
 server.use(bookingRouter.routes());
 server.use(bookingRouter.allowedMethods());
+server.use(adminRouter.routes());
+server.use(adminRouter.allowedMethods());
 
 
 

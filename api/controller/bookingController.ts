@@ -1,9 +1,10 @@
 import { Router } from "https://deno.land/x/oak@v17.1.2/mod.ts";
 import { AppState } from "../../main.ts";
-import { isLoggedIn } from "../middleware.ts";
-import { createReservation, getReservations } from "../../core/auth/reservation.ts";
+import { AdminMiddleware, isLoggedIn } from "../middleware.ts";
+import { createReservation, getReservations, getResources, createResource } from "../../core/auth/reservation.ts";
 import { checkIFUserIsOver15, getUserId } from "../../core/auth/user.ts";
 import { ValidateSession } from "../../core/auth/sessionHandler.ts";
+
 
 const router = new Router<AppState>();
 
@@ -28,6 +29,19 @@ router.post("/api/reservation", isLoggedIn, async (ctx) => {
 router.get("/api/reservation", async (ctx) => {
     const session = ValidateSession(ctx);
     const res = await getReservations(session);
+    ctx.response.body = { res };
+});
+
+
+router.get("/api/resource", AdminMiddleware, async (ctx) => {
+    const res = await getResources();
+    ctx.response.body = { res };
+});
+
+router.post("/api/resource", AdminMiddleware, async (ctx) => {
+    const { name, description } = await ctx.request.body.json();
+    console.log(name, description);
+    const res = await createResource({ resource_name: name, resource_description: description });
     ctx.response.body = { res };
 });
   

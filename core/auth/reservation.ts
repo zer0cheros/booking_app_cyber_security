@@ -68,3 +68,37 @@ export async function getReservations(session:boolean): Promise<string> {
         }
     }
 }
+
+export async function createResource({
+    resource_name, 
+    resource_description
+}: { resource_name: string, resource_description: string }): Promise<string> {
+    const db = await pool.connect();
+    try {
+        await db.queryObject({
+            text: `INSERT INTO loot3ed_resources (resource_name, resource_description) VALUES ($1, $2)`,
+            args: [resource_name, resource_description],
+        });
+        return "Resource created";
+    } catch (error) {
+        console.error("Error creating resource:", error);
+        return "Resource failed";
+    } finally {
+        db.release();
+    }
+}
+
+export async function getResources(): Promise<string> {
+    const db = await pool.connect();
+    try {
+        const result = await db.queryObject({
+            text: `SELECT * FROM loot3ed_resources`,
+        });
+        return JSON.stringify(result.rows);
+    } catch (error) {
+        console.error("Error getting resources:", error);
+        return "Error getting resources";
+    } finally {
+        db.release();
+    }
+}

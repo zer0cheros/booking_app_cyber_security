@@ -2,11 +2,11 @@ POST http://localhost:5000/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "username": "chris2",
-    "email" : "chris2@mail.com",
+    "username": "chris3",
+    "email" : "chris3@mail.com",
     "password": "test1234",
     "role": "admin",
-    "age": "6.10.1990"
+    "age": "6.10.1980"
 }
 
 ###
@@ -17,7 +17,7 @@ POST http://localhost:5000/api/login HTTP/1.1
 content-type: application/json
 
 {
-    "email" : "chris2@mail.com",
+    "email" : "chris3@mail.com",
     "password": "test1234"
 }
 
@@ -32,11 +32,25 @@ POST http://localhost:5000/api/reservation HTTP/1.1
 content-type: application/json
 
 {
-    "resource_id" : 3,
+    "resource_id" : 2,
     "start_date": "2022-10-10",
     "end_date": "2022-10-12"
 }
 
 ###
 
-GET http://localhost:5000/api/reservation HTTP/1.1
+GET http://localhost:5000/api/resource HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/resource HTTP/1.1
+content-type: application/json
+
+{
+    "name": "hackaton",
+    "description": "hackaton event"
+}
+
+###
+
+POST http://localhost:5000/api/profile/delete/reservation?id=22 HTTP/1.1
