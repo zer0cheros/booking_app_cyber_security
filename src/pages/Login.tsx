@@ -65,6 +65,7 @@ export default function Login() {
         <button className="button rounded-sm bg-slate-50 text-slate-900" type="submit">
          Login
         </button>
+        When you Sign up, you agree to our Terms and Privacy Policy. <a href="/terms">Terms</a><br /><a href="/privacy">Privacy</a>
       </form>
     </div>
   )

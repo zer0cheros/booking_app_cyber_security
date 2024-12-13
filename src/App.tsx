@@ -6,6 +6,8 @@ import Login from "./pages/Login.tsx";
 import AuthProvider from "./hooks/AuthProvider.tsx";
 import Reservations from "./pages/Reservations.tsx";
 import PrivateRoute from "./useAuth.tsx";
+import TermsOfService from "./pages/Terms.tsx";
+import PrivacyPolicy from "./pages/Privacy.tsx";
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route element={<PrivateRoute />}>
           <Route path="/reservations" element={<Reservations />} />
         </Route>

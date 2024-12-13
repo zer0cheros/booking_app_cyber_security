@@ -158,3 +158,48 @@ export async function getUserId(_username?: string, _email?: string): Promise<nu
     db.release();
   }
 }
+
+export async function getUser(username: string): Promise<Users | null> {
+  const db = await pool.connect();
+  try {
+    const result = await db.queryObject({
+      text: `SELECT * FROM acce_users WHERE username = $1`,
+      args: [username],
+    });
+    if (result.rows.length === 0) {
+      return null;
+    }
+    // Not goodlooking code but it works
+    const userRow = result.rows[0] as { id:number, username: string, email: string, role: string, age: number };
+    // Sending only the necessary data
+    const user = {
+      id: userRow.id,
+      username: userRow.username,
+      email: userRow.email,
+      role: userRow.role,
+      age: userRow.age, 
+    }
+    return user as Users;
+  } catch (error) {
+    console.error("Error getting user:", error);
+    return null;
+  } finally {
+    db.release();
+  }
+}
+
+export async function deleteUser(username: string): Promise<string> {
+  const db = await pool.connect();
+  try {
+    await db.queryObject({
+      text: `DELETE FROM acce_users WHERE username = $1`,
+      args: [username],
+    });
+    return "User deleted";
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return "Error deleting user";
+  } finally {
+    db.release();
+  }
+}

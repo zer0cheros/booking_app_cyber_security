@@ -17,7 +17,7 @@ POST http://localhost:5000/api/login HTTP/1.1
 content-type: application/json
 
 {
-    "email" : "chris3@mail.com",
+    "email" : "chris2@mail.com",
     "password": "test1234"
 }
 
@@ -32,9 +32,9 @@ POST http://localhost:5000/api/reservation HTTP/1.1
 content-type: application/json
 
 {
-    "resource_id" : 2,
-    "start_date": "2022-10-10",
-    "end_date": "2022-10-12"
+    "resource_id" : 3,
+    "start_date": "2024-10-10",
+    "end_date": "2024-10-12"
 }
 
 ###
@@ -54,3 +54,17 @@ content-type: application/json
 ###
 
 POST http://localhost:5000/api/profile/delete/reservation?id=22 HTTP/1.1
+
+
+###
+
+GET http://localhost:5000/api/profile HTTP/1.1
+
+###
+
+POST http://localhost:5000/api/profile/delete HTTP/1.1
+content-type: application/json
+
+{
+    
+}

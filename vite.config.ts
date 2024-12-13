@@ -1,20 +1,31 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import process from "node:process";
+
 
 export default defineConfig({
   plugins: [react()],
   server: {
     headers: {
-      "Access-Control-Allow-Origin": `http://localhost:5000`,
+      "Access-Control-Allow-Origin": "http://localhost:5000",
       "Access-Control-Allow-Credentials": "true",
-      "Strict-Transport-Security": "max-age=86400; includeSubDomains", 
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains", 
       "X-Content-Type-Options": "nosniff", 
       "X-Frame-Options": "DENY", 
       "X-XSS-Protection": "1; mode=block",
-      "Content-Security-Policy": "script-src 'self' 'sha256-8ZgGo/nOlaDknQkDUYiedLuFRSGJwIz6LAzsOrNxhmU=';",
-
+      "Content-Security-Policy": `
+        default-src 'none';
+        script-src 'self';
+        style-src 'self';
+        img-src 'self' data:;
+        connect-src 'self' http://localhost:5000;
+        font-src 'self';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'self';
+        object-src 'none';
+      `,
     },
+    strictPort: true,
     fs: {
       deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/latest/meta-data/**', '**/latest/**']
     },

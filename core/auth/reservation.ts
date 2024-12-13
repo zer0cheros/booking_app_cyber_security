@@ -102,3 +102,29 @@ export async function getResources(): Promise<string> {
         db.release();
     }
 }
+
+export async function getUserReservarion(user_id: number): Promise<string> {
+    const db = await pool.connect();
+    try {
+        const result = await db.queryObject({
+            text: `
+              SELECT 
+                ar.resource_id, 
+                r.resource_name, 
+                r.resource_description, 
+                ar.reservation_start, 
+                ar.reservation_end 
+              FROM acce_reservations ar
+              INNER JOIN loot3ed_resources r ON ar.resource_id = r.resource_id
+              WHERE ar.reserver_token = $1
+            `,
+            args: [user_id],
+        });
+        return JSON.stringify(result.rows);
+    } catch (error) {
+        console.error("Error getting user reservations:", error);
+        return "Error getting user reservations";
+    } finally {
+        db.release();
+    }
+}

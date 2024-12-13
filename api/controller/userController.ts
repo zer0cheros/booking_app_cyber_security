@@ -1,9 +1,11 @@
 import { Router } from "https://deno.land/x/oak@v17.1.2/mod.ts";
-import { login, registerUser } from '../../core/auth/user.ts'
+import { deleteUser, getUser, login, registerUser } from '../../core/auth/user.ts'
 import { AppState } from "../../main.ts";
 import { registerSchema, loginSchema } from "../../core/helper.ts";
 import { z } from "https://deno.land/x/zod@v3.16.1/mod.ts";
 import { AdminMiddleware, isLoggedIn } from "../middleware.ts";
+import { getUserReservarion } from "../../core/auth/reservation.ts";
+
 
 
 const router = new Router<AppState>();
@@ -67,8 +69,34 @@ router.get("/api/logout", async ({ response, state, cookies }) => {
 
 
 router.get("/api/profile", isLoggedIn, async ({ response, state }) => {
-    response.body = { message: `Hello ${state.session.get('sessionData').username}` }
+    const sessionData = state.session.get('sessionData')
+    const user = await getUser(sessionData.username)
+    if(!user) {
+        response.status = 404;
+        response.body = { error: "User not found" };
+        return;
+    }
+    const reservationData = await getUserReservarion(user?.id)
+    response.body = { user: user, reservation: reservationData }
 })
+
+router.post("/api/profile/delete", isLoggedIn, async (ctx) => {
+    const user = ctx.state.session.get('sessionData')
+    if(!user) {
+        ctx.response.status = 404;
+        ctx.response.body = { error: "User not found" };
+        return;
+    }
+    try {
+        await deleteUser(user.username)
+        ctx.state.session.deleteSession()
+    } catch (error) {
+        ctx.response.status = 500;
+        ctx.response.body = { error: "An error occurred during deletion" };
+        console.error("Deletion error:", error);    
+    }
+    ctx.response.body = { message: "User deleted" };
+});
 
 
 export default router

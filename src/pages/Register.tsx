@@ -70,6 +70,7 @@ export default function Register() {
         <button className="button rounded-sm bg-slate-50 text-slate-900" type="submit">
           Register
         </button>
+        <h2 className="text-slate-50 text-3xl">When you Sign up, you agree to our Terms and Privacy Policy.<br /><br /> <a href="/terms">Terms</a><br /><br /><a href="/privacy">Privacy</a></h2>
       </form>
     </div>
   );

@@ -23,10 +23,14 @@
 | 2024-12-2  | Started to work on Phase 3         | 14.00      | 19.00    | 5.0         |
 | 2024-12-3  | Did some testing on App            | 14.00      | 16.30    | 2.5         |
 | 2024-12-4  | Fixed a big bug!!                  | 18.00      | 20.00    | 2.0         |
+| 2024-12-5  | Wached som recordings              | 18.00      | 20.00    | 2.0         |
+| 2024-12-6  | Completed 2 moduels on Cisco       | 18.00      | 20.00    | 2.0         |
+| 2024-12-7  | Code, Code, Code                   | 19.00      | 21.00    | 2.0         |
+| 2024-12-8  | Final test with Zap                | 18.00      | 20.00    | 2.0         |
 __________________________________________________________________________________________
-|Total hours: 33.0|
+|Total hours: 63.0|
 
-## Booking App
+## Expl0it_Yours3lf
 
 ### Description
 This is a booking app where users can schedule ethical hackers to test for web vulnerabilities. The app uses Deno for the backend, ensuring secure and fast server operations, and React for the frontend to keep everything user-friendly and interactive. It makes it simple for clients to find and book cybersecurity experts, providing quick and easy access to essential web security testing services.

@@ -1,0 +1,45 @@
+{
+    "terms_of_service": {
+      "introduction": "Welcome to our Expl0it_Yours3lf. By using our services, you agree to comply with and be bound by the following terms and conditions.",
+      "eligibility": "You must be at least 12 years old to use this service. By registering, you confirm that you meet this requirement.",
+      "account_responsibility": "You are responsible for maintaining the confidentiality of your account credentials and all activities under your account.",
+      "booking_policy": "Bookings are subject to availability and confirmation by the service provider. Any modifications or cancellations must comply with the provider's policy.",
+      "payment_terms": "All payments must be made through the app. Payment details are securely processed and stored in compliance with data protection laws.",
+      "cancellation_policy": "Cancellations made within 24 hours of the scheduled booking time may be non-refundable, depending on the provider’s policy.",
+      "privacy_policy_link": "Please refer to our Privacy Policy for information on how we handle your data. /privacy",
+      "prohibited_use": "You agree not to misuse the app for illegal activities, spamming, or fraudulent bookings.",
+      "liability_limitation": "We are not responsible for any losses or damages resulting from use of the app, including missed bookings or service provider issues.",
+      "modification_of_terms": "We reserve the right to modify these terms at any time. Continued use of the app constitutes acceptance of the updated terms.",
+      "contact_information": "For questions or concerns, please contact us at support@expl0it.xyz."
+    },
+    "privacy_policy": {
+      "introduction": "Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.",
+      "data_collection": "We collect data such as your name, email address when you create an account or make a booking.",
+      "data_usage": "Your data is used to process bookings, improve our services, and communicate with you about updates or promotions.",
+      "data_protection": "We use industry-standard encryption and security measures to protect your personal information.",
+      "third_party_sharing": "We may share your data with service providers for booking purposes. We do not sell your information to third parties.",
+      "data_retention": "Your personal information will be retained for as long as your account is active or as required by law.",
+      "cookie_policy": "Our app uses cookies to enhance your user experience and analyze app performance.",
+      "user_rights": "You have the right to access, modify, or delete your personal information. Contact us to exercise these rights.",
+      "contact_information": "For privacy-related inquiries, please email us at support@expl0it.xyz."
+    },
+    "faqs": [
+      {
+        "question": "How do I make a booking?",
+        "answer": "To make a booking, log in to your account, search for a service provider, and follow the booking steps."
+      },
+      {
+        "question": "Can I cancel or modify my booking?",
+        "answer": "Yes, cancellations or modifications are allowed as per the service provider's policy. Please check the booking details."
+      },
+      {
+        "question": "Is my payment information secure?",
+        "answer": "Yes, we use secure payment gateways and encryption to protect your payment details."
+      },
+      {
+        "question": "How do I contact customer support?",
+        "answer": "You can reach out to us via the contact form on the app or email us at support@expl0it.xyz."
+      }
+    ]
+  }
+  
