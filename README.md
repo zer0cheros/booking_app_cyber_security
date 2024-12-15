@@ -27,8 +27,15 @@
 | 2024-12-6  | Completed 2 moduels on Cisco       | 18.00      | 20.00    | 2.0         |
 | 2024-12-7  | Code, Code, Code                   | 19.00      | 21.00    | 2.0         |
 | 2024-12-8  | Final test with Zap                | 18.00      | 20.00    | 2.0         |
+| 2024-12-9  | Coded and tested my app            | 18.00      | 20.00    | 2.0         |
+| 2024-12-10 | Trying to solve session-problem    | 19.00      | 21.00    | 2.0         |
+| 2024-12-11 | Wached som recordings              | 18.00      | 20.00    | 2.0         |
+| 2024-12-12 | Completed 2 moduels on Cisco       | 18.00      | 20.00    | 2.0         |
+| 2024-12-13 | Code, Code, Code                   | 15.00      | 20.00    | 5.0         |
+| 2024-12-14 | Writing some homework              | 18.00      | 20.00    | 2.0         |
+
 __________________________________________________________________________________________
-|Total hours: 63.0|
+|Total hours: 69.0|
 
 ## Expl0it_Yours3lf
 

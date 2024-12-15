@@ -1,34 +1,34 @@
 {
-    "title": "Welcome to CyberSec Booking",
+    "title": "Welcome to Expl0it_Yours3lf",
     "heading": "Hire Top Cybersecurity Specialists",
     "hero": {
       "text": "In today's digital age, cybersecurity is not an option—it’s a necessity. At CyberSec Booking, we connect you with certified cybersecurity specialists to protect your business from potential threats.",
-      "image": "https://example.com/hero-image.jpg"
+      "image": "/hero.webp"
     },
     "contents": [
       {
         "id": 1,
         "title": "Why Choose Us?",
         "description": "Our platform is designed for businesses that value security. Every specialist in our network is thoroughly vetted and brings years of experience in cybersecurity solutions.",
-        "image": "https://example.com/why-choose-us.jpg"
+        "image": "/con1.webp"
       },
       {
         "id": 2,
         "title": "How It Works",
         "description": "Our simple 3-step process makes finding and booking a cybersecurity expert quick and easy. Browse profiles, check availability, and book with confidence.",
-        "image": "https://example.com/how-it-works.jpg"
+        "image": "/con2.webp"
       },
       {
         "id": 3,
         "title": "Customer Testimonials",
         "description": "Hear from satisfied clients who have worked with our specialists to secure their digital assets and maintain peace of mind.",
-        "image": "https://example.com/testimonials.jpg"
+        "image": "/con3.webp"
       },
       {
         "id": 4,
         "title": "Our Mission",
         "description": "At CyberSec Booking, our mission is to make the internet a safer place for everyone. We bridge the gap between businesses and top-notch cybersecurity professionals.",
-        "image": "https://example.com/mission.jpg"
+        "image": "/con4.webp"
       }
     ],
     "footer": {
